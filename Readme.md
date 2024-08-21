@@ -97,10 +97,10 @@ CREATE TABLE `postsposts` (
 
 # Installation
 
-1. Git Clone https://github.com/komporbakar/backend-technical-test-sinar-vision.git
+1. Git Clone
 
 ```
-git clone https://
+git clone https://github.com/komporbakar/backend-technical-test-sinar-vision.git
 ```
 
 2. Open Project
