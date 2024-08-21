@@ -54,16 +54,17 @@ func (h *postHandler) GetAllPostsByLimitAndOffset(ctx *fiber.Ctx) error {
 
 	// fmt.Println(limit, offset)
 
-	posts, err := h.postService.GetAllPostsByLimitAndOffset(limit, offset)
+	posts, totalCount, err := h.postService.GetAllPostsByLimitAndOffset(limit, offset)
 	if err != nil {
 		return ctx.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"status": "fail", "message": err.Error()})
 	}
 	return ctx.Status(fiber.StatusOK).JSON(response.WebResponseWithLimitAndOffset{
-		Status:  "success",
-		Message: "Posts fetched successfully",
-		Data:    posts,
-		Limit:   limit,
-		Offset:  offset,
+		Status:     "success",
+		Message:    "Posts fetched successfully",
+		Data:       posts,
+		Limit:      limit,
+		Offset:     offset,
+		TotalCount: totalCount,
 	})
 
 }

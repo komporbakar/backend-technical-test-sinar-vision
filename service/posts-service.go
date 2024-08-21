@@ -8,7 +8,7 @@ import (
 
 type PostService interface {
 	CreatePost(request request.PostRequest) (models.Posts, error)
-	GetAllPostsByLimitAndOffset(limit int, offset int) ([]models.Posts, error)
+	GetAllPostsByLimitAndOffset(limit int, offset int) ([]models.Posts, int64, error)
 	GetPostById(id int) (models.Posts, error)
 	UpdatePost(id int, request request.PostRequest) (models.Posts, error)
 	DeletePost(id int) (models.Posts, error)
@@ -37,12 +37,17 @@ func (s *service) CreatePost(request request.PostRequest) (models.Posts, error) 
 
 }
 
-func (s *service) GetAllPostsByLimitAndOffset(limit int, offset int) ([]models.Posts, error) {
+func (s *service) GetAllPostsByLimitAndOffset(limit int, offset int) ([]models.Posts, int64, error) {
 	posts, err := s.repository.FindAll(limit, offset)
 	if err != nil {
-		return posts, err
+		return nil, 0, err
 	}
-	return posts, nil
+	totalCount, err := s.repository.CountArticles()
+	if err != nil {
+		return nil, 0, err
+	}
+
+	return posts, totalCount, nil
 }
 
 func (s *service) GetPostById(id int) (models.Posts, error) {

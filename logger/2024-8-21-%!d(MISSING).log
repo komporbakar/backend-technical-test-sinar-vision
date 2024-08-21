@@ -1,0 +1,2 @@
+{"ip":"127.0.0.1","latency":4681300,"level":"info","method":"GET","msg":"","path":"/article/5/0","request":null,"status":200,"time":"2024-08-21T17:22:16+07:00","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"}
+{"ip":"127.0.0.1","latency":11802200,"level":"info","method":"GET","msg":"","path":"/article/5/0","request":null,"status":200,"time":"2024-08-21T17:22:16+07:00","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"}

@@ -14,7 +14,7 @@ func Logger(c *fiber.Ctx) error {
 	logger.SetFormatter(&logrus.JSONFormatter{})
 	logger.SetLevel(logrus.DebugLevel)
 
-	nameFile := fmt.Sprintf("logger/%d-%d-%d-%d.log", time.Now().Year(), time.Now().Month(), time.Now().Day(), time.Now().Hour())
+	nameFile := fmt.Sprintf("logger/%d-%d-%d-%d.log", time.Now().Year(), time.Now().Month(), time.Now().Day())
 	file, _ := os.OpenFile(nameFile, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	logger.SetOutput(file)
 

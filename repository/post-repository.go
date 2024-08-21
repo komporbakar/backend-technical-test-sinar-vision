@@ -7,6 +7,7 @@ import (
 )
 
 type PostRepository interface {
+	CountArticles() (int64, error)
 	FindAll(limit int, offset int) ([]models.Posts, error)
 	FindById(id int) (models.Posts, error)
 	Save(post models.Posts) (models.Posts, error)
@@ -20,6 +21,12 @@ type repository struct {
 
 func NewPostRepository(db *gorm.DB) *repository {
 	return &repository{db}
+}
+
+func (r *repository) CountArticles() (int64, error) {
+	var count int64
+	err := r.db.Model(&models.Posts{}).Count(&count).Error
+	return count, err
 }
 
 func (r *repository) FindAll(limit int, offset int) ([]models.Posts, error) {
